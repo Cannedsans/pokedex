@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="Pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="style/style.css">
+  <title>Pokedex</title>
 </head>
 <body>
-    <main>
-    <h1>Olá mundo</h1>
-    </main>
+  <main>
+  <% @pokemons.each do |pkm|%>
+    <blockquote class = "pkm">
+         <a href="/pokemon/<%= pkm.name%>">
+          <img src="<%= pkm.sprites.front_default %>" alt="<%= pkm.name%>">
+         </a>
+        <legend><%= pkm.name%></legend>
+    </blockquote>
+  <% end %>
+  </main>
 </body>
 </html>

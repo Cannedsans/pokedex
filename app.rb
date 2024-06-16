@@ -1,21 +1,18 @@
 require 'sinatra'
-require 'httparty'
+require 'poke-api-v2'
 
 get '/' do
+  @pokemons = []
+
+  10.times do
+    pkm = PokeApi.get(pokemon: rand(1..700))
+    @pokemons.push(pkm)
+  end
+
   erb :index
 end
 
-get '/pokemon/:name' do
-  pokemon_name = params['name']
-  url = "https://pokeapi.co/api/v2/pokemon/#{pokemon_name}"
-
-  response = HTTParty.get(url)
-
-  if response.code == 200
-    content_type :json
-    response.body
-  else
-    status response.code
-    "Erro ao obter os dados do Pokémon"
-  end
+get '/pokemon/:id' do
+  @pkm = PokeApi.get(pokemon: params[:id])
+  erb :poke
 end

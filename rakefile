@@ -1,0 +1,5 @@
+require 'rake'
+
+task :start do
+  sh "ruby app.rb"
+end

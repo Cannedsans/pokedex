@@ -1,0 +1,9 @@
+<h1><%= @pkm.name%></h1>
+
+<img src="<%= @pkm.sprites.front_default %>" alt="<%= @pkm.name%>">
+
+<h2>tipos</h2>
+<p>
+<%= @pkm.types.map { |type| type.type.name }.join(', ')%>
+</p>
+<a href="/">Voltar</a>
