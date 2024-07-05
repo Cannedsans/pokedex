@@ -1,9 +1,28 @@
-<h1><%= @pkm.name%></h1>
+<h1><%= @pkm.name %></h1>
 
-<img src="<%= @pkm.sprites.front_default %>" alt="<%= @pkm.name%>">
+<img src="<%= @pkm.sprites.front_default %>" alt="<%= @pkm.name %>">
 
-<h2>tipos</h2>
+<h2>Tipos</h2>
 <p>
-<%= @pkm.types.map { |type| type.type.name }.join(', ')%>
+  <%= @pkm.types.map { |type| type.type.name }.join(', ') %>
 </p>
+
+<blockquote>
+    <legend>Status</legend>
+    <% @pkm.stats.each do |stat| %>
+    <%= stat.stat.name.capitalize %>: <%= stat.base_stat %> <br>
+  <% end %>
+</blockquote>
+
+<blockquote>
+  <legend>Movimentos</legend>
+  <%= @pkm.moves.map { |move| move.move.name }.join('<br>') %>
+</blockquote>
+
+<blockquote>
+    <legend>Habilidades</legend>
+    <% @pkm.abilities.each do |hab|%>
+        <%= hab.ability.name.capitalize%> <br>
+    <% end %>    
+</blockquote>
 <a href="/">Voltar</a>

@@ -5,7 +5,7 @@ get '/' do
   @pokemons = []
 
   10.times do
-    pkm = PokeApi.get(pokemon: rand(1..700))
+    pkm = PokeApi.get(pokemon: rand(1..1010))
     @pokemons.push(pkm)
   end
 
@@ -14,5 +14,5 @@ end
 
 get '/pokemon/:id' do
   @pkm = PokeApi.get(pokemon: params[:id])
-  erb :poke
+    erb :poke
 end
